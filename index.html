@@ -1,6 +1,322 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
+<head><!DOCTYPE html>
+<html lang="en" class="dark">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Chaudhary | Cybersecurity Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#0a0d14',
+                            darker: '#06080d',
+                            card: '#0f172a',
+                            green: '#00ff66',
+                            cyan: '#00f0ff',
+                            red: '#ff2a6d',
+                            dim: '#003311'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['Fira Code', 'Courier New', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Fira Code', monospace;
+            background-color: #06080d;
+            color: #00ff66;
+            overflow-x: hidden;
+        }
+        /* Custom Matrix Scanline Effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(0, 0, 0, 0.3)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.6;
+        }
+        /* Glow Effects */
+        .glow-green {
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.6);
+        }
+        .glow-cyan {
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+        }
+        .box-glow-green {
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+        }
+        .box-glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06080d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00ff66;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative bg-cyber-darker text-cyber-green selection:bg-cyber-green selection:text-black">
+    <!-- Matrix CRT Scanline Effect -->
+    <div class="scanline"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="border-b border-cyber-green/30 bg-cyber-black/90 backdrop-blur sticky top-0 z-40 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-terminal text-cyber-cyan text-xl"></i>
+                <span class="font-bold text-lg tracking-wider text-white">ABHINAV<span class="text-cyber-cyan">.SEC</span></span>
+                <span class="text-xs bg-cyber-green/10 text-cyber-green border border-cyber-green/30 px-2 py-0.5 rounded-full ml-2 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-cyber-green animate-pulse"></span> ONLINE
+                </span>
+            </div>
+
+            <!-- Header Quick Stats / Toggle -->
+            <div class="flex items-center gap-4 text-sm">
+                <button onclick="scrollToTerminal()" class="hover:text-cyber-cyan transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-code text-xs"></i> CLI Shell
+                </button>
+                <button onclick="scrollToSection('gui-overview')" class="hover:text-cyber-cyan transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-layer-group text-xs"></i> GUI View
+                </button>
+                <a href="#contact" class="bg-cyber-green/20 hover:bg-cyber-green hover:text-black text-cyber-green border border-cyber-green px-3 py-1 rounded transition-all text-xs font-semibold">
+                    Hire / Connect
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-6 w-full space-y-10 z-10 flex-grow">
+
+        <!-- Hero & Identity Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            <!-- Left Info Card -->
+            <div class="bg-cyber-black/80 border border-cyber-green/30 rounded-lg p-6 box-glow-green flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-16 h-16 rounded-full border-2 border-cyber-cyan p-1 flex items-center justify-center bg-cyber-card">
+                            <i class="fa-solid fa-user-shield text-3xl text-cyber-cyan"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-white tracking-wide">Abhinav Chaudhary</h1>
+                            <p class="text-xs text-cyber-cyan">Ethical Hacker & Sec Student</p>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="fa-solid fa-location-dot text-cyber-red"></i> India</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-300 leading-relaxed mb-4">
+                        Passionate Cybersecurity Student focused on Offensive Security, Web Vulnerability Research, Red Teaming, and Python Automation.
+                    </p>
+                </div>
+                
+                <div class="space-y-2 pt-4 border-t border-cyber-green/20 text-xs">
+                    <div class="flex justify-between text-gray-400">
+                        <span>Target Area:</span>
+                        <span class="text-cyber-green">Penetration Testing / AppSec</span>
+                    </div>
+                    <div class="flex justify-between text-gray-400">
+                        <span>Status:</span>
+                        <span class="text-cyber-cyan">Active Learner / CTF Player</span>
+                    </div>
+                    <div class="flex justify-between text-gray-400">
+                        <span>Primary Tooling:</span>
+                        <span class="text-cyber-green">Linux, Burp Suite, Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Terminal Interactive CLI (Takes 2 Columns on LG) -->
+            <div class="lg:col-span-2 bg-cyber-black border border-cyber-green/40 rounded-lg overflow-hidden flex flex-col h-[380px] box-glow-green" id="terminal-section">
+                <!-- Terminal Header Bar -->
+                <div class="bg-slate-900/90 px-4 py-2 border-b border-cyber-green/30 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500 inline-block cursor-pointer" onclick="clearTerminal()"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+                        <span class="text-xs text-gray-400 ml-2 font-mono">abhinav@sec-shell:~</span>
+                    </div>
+                    <div class="text-xs text-gray-500">
+                        Type <span class="text-cyber-cyan font-bold">'help'</span> for list of commands
+                    </div>
+                </div>
+
+                <!-- Terminal Screen Output -->
+                <div id="terminal-body" class="p-4 overflow-y-auto flex-1 font-mono text-xs sm:text-sm space-y-2 text-gray-200">
+                    <p class="text-cyber-cyan">Welcome to Abhinav Chaudhary's Security Terminal v2.0.4</p>
+                    <p class="text-gray-400">System Ready. Interactive shell initialized. Type <span class="text-cyber-green font-bold">help</span> to begin.</p>
+                </div>
+
+                <!-- Terminal Input Line -->
+                <div class="bg-cyber-darker p-3 border-t border-cyber-green/20 flex items-center gap-2">
+                    <span class="text-cyber-green font-bold text-xs sm:text-sm">guest@abhinav-sec:~$</span>
+                    <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-cyber-cyan flex-1 font-mono text-xs sm:text-sm focus:ring-0" placeholder="Type a command (e.g. help, skills, projects)..." autocomplete="off">
+                    <button onclick="executeCommandFromInput()" class="text-xs bg-cyber-green/20 hover:bg-cyber-green text-cyber-green hover:text-black px-2 py-1 rounded transition-colors">Run</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GUI SECTION OVERVIEW -->
+        <div id="gui-overview" class="pt-4">
+            <!-- Section Header -->
+            <div class="flex items-center justify-between border-b border-cyber-green/30 pb-3 mb-6">
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-cyber-cyan"></i> SYSTEM OVERVIEW & MODULES
+                </h2>
+                <div class="text-xs text-gray-400">
+                    Interactive Dashboard View
+                </div>
+            </div>
+
+            <!-- Quick Navigation Tabs -->
+            <div class="flex flex-wrap gap-2 mb-6" id="module-tabs">
+                <button onclick="switchTab('about')" id="tab-about" class="tab-btn bg-cyber-green text-black px-4 py-2 rounded text-xs font-bold transition-all">About / Bio</button>
+                <button onclick="switchTab('skills')" id="tab-skills" class="tab-btn bg-cyber-card hover:bg-cyber-green/20 text-cyber-green border border-cyber-green/30 px-4 py-2 rounded text-xs font-bold transition-all">Technical Skills</button>
+                <button onclick="switchTab('projects')" id="tab-projects" class="tab-btn bg-cyber-card hover:bg-cyber-green/20 text-cyber-green border border-cyber-green/30 px-4 py-2 rounded text-xs font-bold transition-all">Projects & Repos</button>
+                <button onclick="switchTab('certifications')" id="tab-certifications" class="tab-btn bg-cyber-card hover:bg-cyber-green/20 text-cyber-green border border-cyber-green/30 px-4 py-2 rounded text-xs font-bold transition-all">Certifications & Badges</button>
+            </div>
+
+            <!-- Tab 1: About / Bio -->
+            <div id="content-about" class="tab-content space-y-6">
+                <div class="bg-cyber-card border border-cyber-green/30 rounded-lg p-6">
+                    <h3 class="text-base font-bold text-cyber-cyan mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-terminal"></i> About Abhinav Chaudhary
+                    </h3>
+                    <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                        I am a dedicated **Cybersecurity Student** actively building practical expertise in penetration testing, network security, web application vulnerability assessments, and automation. I focus heavily on hands-on labs, CTF challenges (TryHackMe, HackTheBox), and scripting custom tools in Python & Bash to analyze vulnerabilities.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-cyber-black p-4 rounded border border-cyber-green/20">
+                            <i class="fa-solid fa-bug text-cyber-red text-2xl mb-2"></i>
+                            <h4 class="text-xs font-bold text-white uppercase">Offensive Focus</h4>
+                            <p class="text-xs text-gray-400 mt-1">Reconnaissance, Web App Auditing (OWASP Top 10), Exploitation basics.</p>
+                        </div>
+                        <div class="bg-cyber-black p-4 rounded border border-cyber-green/20">
+                            <i class="fa-solid fa-code text-cyber-cyan text-2xl mb-2"></i>
+                            <h4 class="text-xs font-bold text-white uppercase">Scripting & Tools</h4>
+                            <p class="text-xs text-gray-400 mt-1">Python security automation scripts, Bash shell, Termux environment setup.</p>
+                        </div>
+                        <div class="bg-cyber-black p-4 rounded border border-cyber-green/20">
+                            <i class="fa-solid fa-network-wired text-cyber-green text-2xl mb-2"></i>
+                            <h4 class="text-xs font-bold text-white uppercase">Networking & Linux</h4>
+                            <p class="text-xs text-gray-400 mt-1">TCP/IP fundamentals, Wireshark packet analysis, Kali & Ubuntu Linux.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: Technical Skills -->
+            <div id="content-skills" class="tab-content hidden space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Red Team / PenTesting -->
+                    <div class="bg-cyber-card border border-cyber-green/30 rounded-lg p-5">
+                        <div class="flex items-center gap-2 mb-4 text-cyber-red font-bold text-sm">
+                            <i class="fa-solid fa-user-ninja"></i> PenTesting & Red Team
+                        </div>
+                        <ul class="text-xs space-y-2 text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-green text-[10px]"></i> Web Application Penetration Testing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-green text-[10px]"></i> Vulnerability Assessment & Recon</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-green text-[10px]"></i> OWASP Top 10 Vulnerabilities</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyber-green text-[10px]"></i> CTF Machine Solving (THM/HTB)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Security Tools -->
+                    <div class="bg-cyber-card border border-cyber-green/30 rounded-lg p-5">
+                        <div class="flex items-center gap-2 mb-4 text-cyber-cyan font-bold text-sm">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Security Tools
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">Nmap</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">Burp Suite</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">Metasploit</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">Wireshark</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">SQLMap</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">Gobuster / FFUF</span>
+                            <span class="bg-cyber-black border border-cyber-cyan/40 text-cyber-cyan px-2.5 py-1 rounded text-xs">John the Ripper</span>
+                        </div>
+                    </div>
+
+                    <!-- Systems & Environments -->
+                    <div class="bg-cyber-card border border-cyber-green/30 rounded-lg p-5">
+                        <div class="flex items-center gap-2 mb-4 text-cyber-green font-bold text-sm">
+                            <i class="fa-solid fa-server"></i> Systems & Environment
+                        </div>
+                        <ul class="text-xs space-y-2 text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-terminal text-cyber-green text-[10px]"></i> Kali Linux / Ubuntu Administration</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-mobile-screen-button text-cyber-green text-[10px]"></i> Termux Advanced Environment Setup</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-network-wired text-cyber-green text-[10px]"></i> Networking Fundamentals (TCP/IP, DNS)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-code-branch text-cyber-green text-[10px]"></i> Git & GitHub Version Control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Projects Showcase -->
+            <div id="content-projects" class="tab-content hidden space-y-6">
+                <!-- Filter Buttons -->
+                <div class="flex gap-2 border-b border-cyber-green/20 pb-3">
+                    <button onclick="filterProjects('all')" class="proj-filter-btn text-xs bg-cyber-green text-black px-3 py-1 rounded font-semibold">All Projects</button>
+                    <button onclick="filterProjects('scanner')" class="proj-filter-btn text-xs bg-cyber-black text-cyber-green border border-cyber-green/30 px-3 py-1 rounded hover:bg-cyber-green/10">Scanners</button>
+                    <button onclick="filterProjects('automation')" class="proj-filter-btn text-xs bg-cyber-black text-cyber-green border border-cyber-green/30 px-3 py-1 rounded hover:bg-cyber-green/10">Python Automation</button>
+                    <button onclick="filterProjects('writeup')" class="proj-filter-btn text-xs bg-cyber-black text-cyber-green border border-cyber-green/30 px-3 py-1 rounded hover:bg-cyber-green/10">CTF Write-ups</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Project 1 -->
+                    <div class="proj-card scanner bg-cyber-card border border-cyber-green/30 rounded-lg p-5 flex flex-col justify-between hover:border-cyber-cyan transition-all">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-white font-bold text-sm">Python Multi-Threaded Port Scanner</h4>
+                                <span class="bg-cyber-cyan/10 text-cyber-cyan border border-cyber-cyan/30 text-[10px] px-2 py-0.5 rounded">Python / Network</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-4">
+                                A high-speed custom multi-threaded network port scanner built using Python socket programming and banner grabbing features.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center text-xs pt-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abhinav Chaudhary | Cybersecurity Portfolio</title>
